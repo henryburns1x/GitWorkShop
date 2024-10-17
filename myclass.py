@@ -9,5 +9,3 @@ class MyClass:
 
     def print_num_sqaure(self):
         return self.num**2
-
-    
