@@ -70,3 +70,9 @@ here in the main, change the word in the file to mechanical
 git add .
 git commit -m "changed dept to mechanical"
 git merge change-dept <- this will create merge conflict
+
+14. Use the scenario above to create a merge conflict in your repository. Then open the `department.txt` file and you should see some extra text is present there.
+
+15. If you are using VS Code, the editor will indicate which change belongs to which branch (current or incoming). Select the change you want to keep and the commit the changes to the repository.
+
+16. Finally push the changes to the remote.
