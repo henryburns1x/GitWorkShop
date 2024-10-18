@@ -1,21 +1,72 @@
-# GitWorkShop
+# Git/Github Workshop
 
 ## Your Activites
 
-Now that you've have some significant practice, here's what you need to do for this lab. Make sure to use the **CommandLine interface on your local machine** to complete this operations (**don't use web-based commits as you need to learn and practice the Git commands**).
+Firstly, fork this repository into your account on github. Then clone your fork to your local machine. Then open the project in VS code.
 
-1. Clone this repo to your local machine (I would **strongly** suggest using the commandline version of the shell). (see https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)
-2. Create a branch called **greeting** and switch to this branch and change to the `src` folder. If you run `git status` what is the output of this and why (create a file called `answer.txt` on this branch and add your answer to it (just don't copy/paste in the output but answer the question)? [1 mark]
-3. Create a file called `greeting.txt`. Add a message to the file. [1 mark]
-4. Add `greeting.txt` and `answer.txt` files to staging area and commit (with appropriate message). [1 mark]
-5. What is the output of `git branch`? Add the output of this to a file called branch.txt, add the file to staging and commit (with appropriate commit message). [1 mark]
-6. What is the output of `git log --oneline --graph --all` (Just for your own learning)
-7. Create a branch called **readme** and switch to this branch (still in the src folder). [1 mark]
-8. Create a `README.md` file using GitHub Markdown (https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet). Add some content using at least one header [+0.5], a list [+0.5], emphasis [+0.5] and a hyperlink [+0.5]. Add `README.md` to the staging area and commit (with the appropriate message). [+1]
-9. Push your changes upstream to GitHub.
-10. Create a PR (Pull Request) to merge both branches into the `master` branch (note: this is done on GitHub). [+1]
-11. Review and merge the changes (both of these items should end up in the `src` folder on the `master` branch (there should be no conflicts as they are different files) (note: this is done on GitHub and normally someone else would do the review, but here the goal is to just be able to complete the review process). [+1]
+**NOTE: you can only clone to an empty directory**<br>
+**using HTTPS protocol is the simplest way to clone**
 
-These steps are important to become familar with as we will be working with this flow on a regular basis.
+### Basic git commands
 
-**This material was borrowed from Dr. Scott Fazakerley's COSC 310 lab 1**
+1. First let's look at the existing branches in the repository. Use `git branch` command to view the existing branches. Now notice that one of these branches is marked with an asterisk **(\*)**, that branch is your current branch.
+
+2. Create a new branch and call it `my-branch`. Then in the src directory, create a new text file `introduction.txt` and in it write down your name. **(Use git checkout -b [branch-name] to create a new branch and switch to it)**
+
+3. Run the `git status` command. This will show you the current status of the files you're working on.
+
+4. Add the file you created to the staging area. Now commit the changes to git, and run `git status` again. This time you should get the message indicating a clean working tree. \*\*(use `git commit -m "commit message goes here"` to make your commits)
+
+5. Now switch back to the `main` branch. Merge the changes made in the new branch to the main
+
+6. Still in the main, make some changes in the `introduction.txt` file. Add whatever you wish. Then add the changes to the staging area and commit.
+
+7. run the `git log` command. Here you can notice your commit history. Each commit that you have created has an associated SHA-1 hash that references it. These hashes are important and can be used when you want to rollback changes/commits. **(press q on your keyboard to return back to terminal)**
+
+### Remote repository
+
+#### Pushing changes
+
+8. Now that you have made all the changes that you want, let's push these commits onto github.
+
+9. run the git branch command with r flag `git branch -r` to view all of the remote branches.
+
+10. We want to push to the main branch of the remote repository. Use `git push [remote] [remote-branch]` command to push to your changes to your remote repository. Next go on github and confirm that your changes have correctly appeared on the remote repository
+
+#### Pulling changes
+
+11. Still on github, go into the `src` directory and use the add file button to create a new text file `anotherFile` and add some text to it. Once you are done, commit the changes.
+
+12. Go back to your local workspace. Now let's bring that file we created in the remote repository onto our local machine. First run the git status command to check for any changes that are yet to be commited. Commit those changes if there are any. Next use the `git pull` command to bring the latest snapshot of your project that is stored on the remote repository.
+
+#### making a pull request
+
+Pull requests are very useful when working in teams.
+In practice, you would create a pull request for every issue that you work on and wish to merge into your main codebase. Each pull request will contain all the commits that need to be pulled into main codebase and a description of the work that you have done. Then once a pull request in created, it will be reviewed by other members of your team. If the reviewers find any errors/mistakes, they will request changes that you can then work on. Otherwise they can approve and pull your changes.
+
+13. Go into your remote repository and create a pull request from your fork to the original repository.
+
+### Misc.
+
+#### Merge conflicts
+
+Merge conflicts commonly occur when trying to merge two branches that have changed the same line in a document but with different values.
+
+scenario:
+
+main/master branch:
+department.txt; this file only contains the word sofware
+
+git checkout -b change-dept
+
+here department.txt is changed to only contain the word electrical
+
+git add .
+git commit -m "changed dept to electrical"
+git checkout main
+
+here in the main, change the word in the file to mechanical
+
+git add .
+git commit -m "changed dept to mechanical"
+git merge change-dept <- this will create merge conflict
