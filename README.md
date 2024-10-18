@@ -15,7 +15,7 @@ Firstly, fork this repository into your account on github. Then clone your fork 
 
 3. Run the `git status` command. This will show you the current status of the files you're working on.
 
-4. Add the file you created to the staging area. Now commit the changes to git, and run `git status` again. This time you should get the message indicating a clean working tree. \*\*(use `git commit -m "commit message goes here"` to make your commits)
+4. Add the file you created to the staging area. Now commit the changes to git, and run `git status` again. This time you should get the message indicating a clean working tree. **(use `git commit -m "commit message goes here"` to make your commits)**
 
 5. Now switch back to the `main` branch. Merge the changes made in the new branch to the main
 
@@ -76,3 +76,7 @@ git merge change-dept <- this will create merge conflict
 15. If you are using VS Code, the editor will indicate which change belongs to which branch (current or incoming). Select the change you want to keep and the commit the changes to the repository.
 
 16. Finally push the changes to the remote.
+
+#### Deleting branches
+
+17. Lastly, we no longer need the change-dept branch anymore so let's delete it. You can delete a branch using the `git branch -d [branch-name]` command. Use this command to delete any other branch no longer needed. **Do not delete main/master branch**
